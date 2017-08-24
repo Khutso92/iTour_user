@@ -39,11 +39,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ImageUpload imageUpload = (ImageUpload) getIntent().getSerializableExtra("selected_item");
 
-
-
-
-
-
         if (DisplayPlacesActivity.stauts == true) {
 
             try {
