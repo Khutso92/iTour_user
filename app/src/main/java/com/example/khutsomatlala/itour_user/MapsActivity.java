@@ -37,49 +37,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        ImageUpload imageUpload = (ImageUpload) getIntent().getSerializableExtra("selected_item");
+     Intent i = getIntent();
 
-        if (DisplayPlacesActivity.stauts == true) {
+     String lati = i.getStringExtra("lat");
+     String loni = i.getStringExtra("lon");
+     String name = i.getStringExtra("name");
 
             try {
-
-                Double lat = Double.parseDouble(imageUpload.getLatitude());
-                Double lng = Double.parseDouble(imageUpload.getLongtiude());
-
-                String title = imageUpload.getName();
-
+                Double lat = Double.parseDouble(lati);
+                Double lng = Double.parseDouble(loni);
 
                 // Add a marker in Sydney and move the camera
                 LatLng sydney = new LatLng(lat, lng);
 
-                mMap.addMarker(new MarkerOptions().position(sydney).title(title));
+                mMap.addMarker(new MarkerOptions().position(sydney).title(name));
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 15));
-
-
-
-
 
             } catch (NullPointerException e) {
 
                 e.printStackTrace();
 
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
+
             } catch (NumberFormatException e) {
 
                 Toast.makeText(this, "Place not allocated on the map", Toast.LENGTH_SHORT).show();
-
                 Intent intent = new Intent(this, DisplayPlacesActivity.class);
                 startActivity(intent);
             }
-
         }
-
-    }
 
     public void places(View view) {
         Intent intent = new Intent(MapsActivity.this, DisplayPlacesActivity.class);
         startActivity(intent);
-
 
     }
 }

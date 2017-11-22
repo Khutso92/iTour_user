@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by Khutso Matlala on 8/7/2017.
  */
 
-public class ImageUpload  implements Serializable {
+public class model implements Serializable {
 
 
 
@@ -15,16 +15,17 @@ public class ImageUpload  implements Serializable {
     public String category;
     public String latitude;
     public String longtiude;
+    public String call;
 
 
     public String urI;
 
 
-    public ImageUpload() {
+    public model() {
 
     }
 
-    public ImageUpload(String name, String urI, String description, String category,String latitude,String longtiude) {
+    public model(String name, String urI, String description, String category, String latitude, String longtiude) {
         this.urI = urI;
         this.name = name;
         this.description = description;
@@ -37,7 +38,6 @@ public class ImageUpload  implements Serializable {
 
 
     public String getName() {
-
         return name;
     }
 
@@ -62,5 +62,10 @@ public class ImageUpload  implements Serializable {
     public String getLongtiude()
     {
         return longtiude;
+    }
+
+
+    public String getCall() {
+        return call;
     }
 }
